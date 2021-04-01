@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scanner"
+    app:startDestination="@id/scannerFragment">
+
+    <fragment
+        android:id="@+id/scannerFragment"
+        android:name="com.elkir.scanner.scenes.fragments.scanner.ScannerFragment"
+        android:label="ScannerFragment"
+        tools:layout="@layout/fragment_scanner">
+        <action
+            android:id="@+id/openShowVideoFragment"
+            app:destination="@id/showVideoFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/showVideoFragment"
+        android:name="com.elkir.scanner.scenes.fragments.scanner.show_video.ShowVideoFragment"
+        android:label="showVideoFragment"
+        tools:layout="@layout/fragment_show_video">
+        <argument
+            android:name="videoLink"
+            app:argType="string" />
+    </fragment>
+</navigation>

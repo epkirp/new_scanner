@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Сканер видео</string>
+
+    <!-- Bottom navigation -->
+    <string name="scanner">Сканер</string>
+    <string name="video">Видео</string>
+
+    <!-- dialogs -->
+    <string name="loading">Загружаем…</string>
+    <string name="ok">OK</string>
+    <string name="error_not_allowed_url">Недопустимая ссылка</string>
+</resources>
