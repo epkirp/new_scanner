@@ -9,9 +9,9 @@ import android.view.ViewTreeObserver.OnGlobalLayoutListener
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.elkir.scanner.R
-import com.elkir.scanner.extensions.changeVisibility
 import com.elkir.scanner.databinding.FragmentBottomNavigationBinding
 import com.elkir.scanner.extensions.BackButtonBehaviour
+import com.elkir.scanner.extensions.changeVisibility
 import com.elkir.scanner.extensions.setupWithNavController
 
 
@@ -39,7 +39,7 @@ class BottomNavigationContainer : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_bottom_navigation, container, false)
         return binding.root
@@ -64,9 +64,13 @@ class BottomNavigationContainer : Fragment() {
         )
     }
 
+    fun changeBottomNavigationVisibility(isVisible: Boolean) {
+        binding.bottomNavigationView.changeVisibility(isVisible)
+    }
+
     private fun setupBottomNavBar() {
         val bottomNavView = binding.bottomNavigationView
-        val navGraphIds = listOf(R.navigation.scanner, R.navigation.video)
+        val navGraphIds = listOf(R.navigation.scanner, R.navigation.video_history)
 
         bottomNavView.setupWithNavController(
             fragmentManager = childFragmentManager,

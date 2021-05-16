@@ -6,6 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import com.elkir.scanner.extensions.safeDialogDismiss
+import com.elkir.scanner.extensions.safeShow
+import com.elkir.scanner.scenes.dialogs.LoadingDialog
 import moxy.MvpAppCompatFragment
 
 
@@ -31,5 +34,17 @@ abstract class BaseFragment<VB : ViewDataBinding> : MvpAppCompatFragment(), Base
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpListeners()
+    }
+
+    override fun changeLoadingDialogVisibility(isVisible: Boolean) {
+        if (isVisible) {
+            childFragmentManager.safeShow(LoadingDialog.LOADING_DIALOG_TAG) {
+                LoadingDialog().apply {
+                    isCancelable = false
+                }
+            }
+        } else {
+            childFragmentManager.safeDialogDismiss(LoadingDialog.LOADING_DIALOG_TAG)
+        }
     }
 }

@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rotate xmlns:android="http://schemas.android.com/apk/res/android"
-    android:duration="0"
     android:fromDegrees="0"
     android:pivotX="50%"
     android:pivotY="50%"
-    android:toDegrees="360">
+    android:toDegrees="720">
 
-    <vector
-        android:width="104dp"
-        android:height="104dp"
-        android:viewportWidth="104"
-        android:viewportHeight="104">
-        <path
-            android:fillColor="@color/blue"
-            android:pathData="M15.306,73.185C19.213,79.952 24.916,85.507 31.783,89.236C38.65,92.964 46.414,94.721 54.218,94.312C62.021,93.903 69.559,91.344 75.999,86.919C82.439,82.493 87.529,76.372 90.707,69.234C93.886,62.095 95.028,54.217 94.008,46.47C92.988,38.722 89.846,31.408 84.928,25.335C80.01,19.263 73.509,14.668 66.144,12.06C58.778,9.452 50.834,8.931 43.191,10.556L43.907,13.925C50.929,12.432 58.227,12.911 64.994,15.307C71.761,17.703 77.733,21.924 82.251,27.503C86.769,33.082 89.656,39.802 90.593,46.919C91.53,54.036 90.48,61.274 87.56,67.832C84.641,74.391 79.964,80.013 74.048,84.08C68.132,88.146 61.206,90.497 54.037,90.872C46.868,91.248 39.735,89.634 33.426,86.209C27.118,82.783 21.879,77.68 18.289,71.463L15.306,73.185Z" />
-    </vector>
+    <shape
+        android:shape="ring"
+        android:thickness="3dp"
+        android:useLevel="false">
+
+        <gradient
+            android:angle="0"
+            android:endColor="@color/blue"
+            android:startColor="@android:color/transparent"
+            android:type="sweep"
+            android:useLevel="false" />
+    </shape>
+
 </rotate>

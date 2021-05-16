@@ -1,37 +1,39 @@
 package com.elkir.scanner.scenes.fragments.scanner
 
-import com.elkir.scanner.R
+import androidx.core.net.toUri
+import com.elkir.domain.gateways.PublicFileGateway
+import com.elkir.domain.models.VideoPlayerParams
 import com.elkir.scanner.base.BasePresenter
 import com.elkir.scanner.constants.PatternConstants
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.rxkotlin.addTo
+import io.reactivex.schedulers.Schedulers
 import moxy.InjectViewState
 import java.util.*
 import javax.inject.Inject
 
 @InjectViewState
 class ScannerPresenter @Inject constructor(
-
+    private val publicFileGateway: PublicFileGateway
 ) : BasePresenter<ScannerView>() {
 
     fun onCodeScanned(link: String) {
-        viewState.changeLoadingDialogVisibility(isVisible = true)
         val linkForCheck = link.toLowerCase(Locale.US)
 
         when {
             PatternConstants.patternLocal.matcher(linkForCheck).matches() -> {
-                viewState.openShowVideoFragment(linkForCheck)
+                viewState.openVideoPlayerDialog(
+                    VideoPlayerParams(
+                        videoUri = link.toUri().normalizeScheme().toString(),
+                        isLocalVideo = true
+                    )
+                )
             }
 
-            PatternConstants.patternYandex.matcher(linkForCheck).matches() -> {
-                viewState.openShowVideoFragment(linkForCheck)
-            }
+            PatternConstants.patternYandex.matcher(linkForCheck).matches() ||
+                    PatternConstants.patternYandexDisk.matcher(linkForCheck).matches() -> {
 
-            PatternConstants.patternYandexDisk.matcher(linkForCheck).matches() -> {
-                viewState.openShowVideoFragment(linkForCheck)
-            }
-
-            else -> {
-                viewState.changeLoadingDialogVisibility(isVisible = false)
-                viewState.openErrorDialog(R.string.error_not_allowed_url)
+                getRemoteVideo(publicKey = link.toUri().normalizeScheme().toString())
             }
         }
     }
@@ -42,5 +44,27 @@ class ScannerPresenter @Inject constructor(
 
     private fun showError() {
 
+    }
+
+    private fun getRemoteVideo(publicKey: String) {
+        publicFileGateway.getPublicResources(publicKey)
+            .subscribeOn(Schedulers.io())
+            .doOnSubscribe { viewState.changeLoadingDialogVisibility(true) }
+            .observeOn(AndroidSchedulers.mainThread())
+            .doFinally { viewState.changeLoadingDialogVisibility(false) }
+            .subscribe({
+                if (it.file == null) {
+                    //todo: show error
+                } else {
+                    viewState.openVideoPlayerDialog(
+                        VideoPlayerParams(
+                            videoUri = it.file!!,
+                            isLocalVideo = false
+                        )
+                    )
+                }
+            }, {
+                it.printStackTrace()
+            }).addTo(compositeDisposable)
     }
 }

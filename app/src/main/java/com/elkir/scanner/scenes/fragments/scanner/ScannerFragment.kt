@@ -2,19 +2,18 @@ package com.elkir.scanner.scenes.fragments.scanner
 
 import android.os.Bundle
 import android.view.View
-import androidx.navigation.fragment.findNavController
 import com.budiyev.android.codescanner.CodeScanner
 import com.budiyev.android.codescanner.DecodeCallback
 import com.budiyev.android.codescanner.ErrorCallback
+import com.elkir.domain.models.VideoPlayerParams
 import com.elkir.scanner.App
 import com.elkir.scanner.R
 import com.elkir.scanner.base.BaseFragment
 import com.elkir.scanner.databinding.FragmentScannerBinding
-import com.elkir.scanner.extensions.safeDialogDismiss
 import com.elkir.scanner.extensions.safeShow
 import com.elkir.scanner.scenes.dialogs.ErrorDialog
-import com.elkir.scanner.scenes.dialogs.LoadingDialog
-import com.elkir.scanner.scenes.dialogs.LoadingDialog.Companion.LOADING_DIALOG_TAG
+import com.elkir.scanner.scenes.fragments.containers.BottomNavigationContainer
+import com.elkir.scanner.scenes.fragments.video_player.VideoPlayerDialog
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
 
@@ -33,6 +32,8 @@ class ScannerFragment : BaseFragment<FragmentScannerBinding>(), ScannerView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         codeScanner = CodeScanner(requireContext(), binding.codeScannerView)
+        (requireParentFragment().parentFragment as BottomNavigationContainer)
+            .changeBottomNavigationVisibility(isVisible = true)
         super.onViewCreated(view, savedInstanceState)
     }
 
@@ -59,21 +60,11 @@ class ScannerFragment : BaseFragment<FragmentScannerBinding>(), ScannerView {
         }
     }
 
-    override fun openShowVideoFragment(link: String) {
-        ScannerFragmentDirections.openShowVideoFragment(videoLink = link)
-            .let(findNavController()::navigate)
-    }
-
-    override fun changeLoadingDialogVisibility(isVisible: Boolean) {
-        if (isVisible) {
-            childFragmentManager.safeShow(LOADING_DIALOG_TAG) {
-                LoadingDialog().apply {
-                    isCancelable = false
-                }
-            }
-        } else {
-            childFragmentManager.safeDialogDismiss(LOADING_DIALOG_TAG)
-        }
+    override fun openVideoPlayerDialog(videoPlayerParams: VideoPlayerParams) {
+        VideoPlayerDialog(params = videoPlayerParams).show(
+            childFragmentManager,
+            VideoPlayerDialog.VIDEO_PLAYER_DIALOG_TAG
+        )
     }
 
     override fun openErrorDialog(errorDescriptionId: Int) {

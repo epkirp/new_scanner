@@ -9,19 +9,6 @@
         android:id="@+id/scannerFragment"
         android:name="com.elkir.scanner.scenes.fragments.scanner.ScannerFragment"
         android:label="ScannerFragment"
-        tools:layout="@layout/fragment_scanner">
-        <action
-            android:id="@+id/openShowVideoFragment"
-            app:destination="@id/showVideoFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_scanner" />
 
-    <fragment
-        android:id="@+id/showVideoFragment"
-        android:name="com.elkir.scanner.scenes.fragments.scanner.show_video.ShowVideoFragment"
-        android:label="showVideoFragment"
-        tools:layout="@layout/fragment_show_video">
-        <argument
-            android:name="videoLink"
-            app:argType="string" />
-    </fragment>
 </navigation>

@@ -1,6 +1,5 @@
 package com.elkir.scanner.scenes.main
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -26,14 +25,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSupportNavigateUp(): Boolean {
         return currentNavController.navigateUp()
-    }
-
-    fun openBottomNavigationFragment() {
-        containers.forEach {
-            currentNavController.popBackStack(it.value, true)
-        }
-
-        currentNavController.navigate(R.id.bottomNavigationContainer)
     }
 
 
