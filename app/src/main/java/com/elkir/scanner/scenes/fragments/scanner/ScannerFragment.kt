@@ -10,8 +10,6 @@ import com.elkir.scanner.App
 import com.elkir.scanner.R
 import com.elkir.scanner.base.BaseFragment
 import com.elkir.scanner.databinding.FragmentScannerBinding
-import com.elkir.scanner.extensions.safeShow
-import com.elkir.scanner.scenes.dialogs.ErrorDialog
 import com.elkir.scanner.scenes.fragments.containers.BottomNavigationContainer
 import com.elkir.scanner.scenes.fragments.video_player.VideoPlayerDialog
 import moxy.presenter.InjectPresenter
@@ -65,13 +63,5 @@ class ScannerFragment : BaseFragment<FragmentScannerBinding>(), ScannerView {
             childFragmentManager,
             VideoPlayerDialog.VIDEO_PLAYER_DIALOG_TAG
         )
-    }
-
-    override fun openErrorDialog(errorDescriptionId: Int) {
-        childFragmentManager.safeShow(ErrorDialog.ERROR_DIALOG_TAG) {
-            ErrorDialog().apply {
-                this.textId = errorDescriptionId
-            }
-        }
     }
 }

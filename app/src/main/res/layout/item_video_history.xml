@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/standard_margin"
+        android:background="@color/white">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvVideoName"
+            style="@style/TitleText"
+            android:layout_marginTop="@dimen/standard_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Название видео" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvLastWatchDateTitle"
+            style="@style/DescriptionText"
+            android:layout_marginTop="@dimen/text_margin"
+            android:text="@string/last_watch_date"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvVideoName" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvLastWatchDate"
+            style="@style/DescriptionText"
+            android:layout_marginTop="@dimen/text_margin"
+            app:layout_constraintEnd_toStartOf="@id/ivVideoLocation"
+            app:layout_constraintStart_toEndOf="@id/tvLastWatchDateTitle"
+            app:layout_constraintTop_toBottomOf="@id/tvVideoName"
+            tools:text="10.12.2020" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivVideoLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/standard_margin"
+            android:layout_marginBottom="@dimen/standard_margin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tvLastWatchDate"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_remote_video" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvPath"
+            style="@style/DescriptionText"
+            android:layout_marginTop="@dimen/standard_margin"
+            android:layout_marginBottom="@dimen/standard_margin"
+            android:textColor="@color/gray"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/ivVideoLocation"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvLastWatchDateTitle"
+            tools:text="https://disk.yandex.ru/i/NXdGvxoaMyUrgA" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

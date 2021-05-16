@@ -9,4 +9,7 @@ interface BaseView : MvpView {
 
     @StateStrategyType(AddToEndSingleStrategy::class)
     fun changeLoadingDialogVisibility(isVisible: Boolean)
+
+    @StateStrategyType(AddToEndSingleStrategy::class)
+    fun openErrorDialog(titleStringId: Int)
 }

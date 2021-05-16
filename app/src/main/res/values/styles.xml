@@ -13,7 +13,29 @@
         <item name="android:background">@drawable/button_background</item>
     </style>
 
+    <style name="Text">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/standard_margin</item>
+        <item name="android:layout_marginEnd">@dimen/standard_margin</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TitleText" parent="Text">
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:textSize">@dimen/title_text_size</item>
+    </style>
+
+    <style name="DescriptionText" parent="Text">
+        <item name="android:textSize">@dimen/description_text_size</item>
+    </style>
+
     <style name="ProgressBar">
         <item name="android:indeterminateDrawable">@drawable/progress_bar</item>
+    </style>
+
+    <style name="Toolbar">
+        <item name="android:layout_height">?android:attr/actionBarSize</item>
+        <item name="layout_scrollFlags">scroll|enterAlways</item>
     </style>
 </resources>

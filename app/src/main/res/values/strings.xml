@@ -9,4 +9,11 @@
     <string name="loading">Загружаем…</string>
     <string name="ok">OK</string>
     <string name="error_not_allowed_url">Недопустимая ссылка</string>
+    <string name="error_video_not_found">Видео по данной ссылке не найдено</string>
+    <string name="error_unknown">Что-то пошло не так</string>
+
+
+    <!-- Video history fragment -->
+    <string name="last_watch_date">Последняя дата просмотра: </string>
+    <string name="empty_list">Список пуст</string>
 </resources>

@@ -8,7 +8,7 @@ import javax.inject.Singleton
 
 
 @Singleton
-@Component(modules = [GatewayModule::class])
+@Component(modules = [GatewayModule::class, RealmModule::class])
 
 interface AppComponent {
 

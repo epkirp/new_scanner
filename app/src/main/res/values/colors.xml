@@ -9,7 +9,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="blue">#2B5C84</color>
+    <color name="gray">#CDCDCD</color>
     <color name="dividing_line_color">#80D2D3DA</color>
+    <color name="gray_background">#F8F7F6</color>
 
     <!-- Bottom navigation -->
     <color name="bottom_navigation_active">#2B5C84</color>
