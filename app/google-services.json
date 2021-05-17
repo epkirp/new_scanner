@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "580099246127",
+    "project_id": "scanner-ce2e1",
+    "storage_bucket": "scanner-ce2e1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:580099246127:android:f5027bfee0205246d2deda",
+        "android_client_info": {
+          "package_name": "com.elkir.scanner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "580099246127-22u9tkslqhl8foonqcem11f0h5a08nlk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCp7XeYL36yhcaXZK5mcsvYlww65lVxGlQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "580099246127-22u9tkslqhl8foonqcem11f0h5a08nlk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

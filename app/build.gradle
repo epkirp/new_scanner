@@ -3,8 +3,8 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'androidx.navigation.safeargs.kotlin'
-    //id 'com.google.gms.google-services'
-    //id 'com.google.firebase.crashlytics'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
 }
 
 android {
@@ -80,9 +80,9 @@ dependencies {
     releaseImplementation "com.readystatesoftware.chuck:library-no-op:$chuckVersion"
 
     // Firebase
-    //implementation platform("com.google.firebase:firebase-bom:$firebaseVersion")
-    //implementation 'com.google.firebase:firebase-crashlytics-ktx'
-    //implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation platform("com.google.firebase:firebase-bom:$firebaseVersion")
+    implementation 'com.google.firebase:firebase-crashlytics-ktx'
+    implementation 'com.google.firebase:firebase-analytics-ktx'
 
     //code scanner
     implementation "com.budiyev.android:code-scanner:$codeScannerVersion"

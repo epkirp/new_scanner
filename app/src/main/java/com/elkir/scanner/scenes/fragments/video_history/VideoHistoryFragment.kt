@@ -52,10 +52,6 @@ class VideoHistoryFragment : BasePaginationFragment<FragmentVideoHistoryBinding,
         setUpAdapter(videoHistoryAdapter as BaseAdapter<VideosModel, FragmentVideoHistoryBinding>)
     }
 
-    override fun setUpListeners() {
-        /* Nothing */
-    }
-
     override fun addExtraItems(model: VideosModel) {
         videoHistoryAdapter.addExtraItems(model.items)
     }

@@ -28,14 +28,14 @@ class ScannerPresenter @Inject constructor(
         val linkForCheck = link.toLowerCase(Locale.US)
 
         when {
-            PatternConstants.patternLocal.matcher(linkForCheck).matches() -> {
+            /*PatternConstants.patternLocal.matcher(linkForCheck).matches() -> {
                 viewState.openVideoPlayerDialog(
                     VideoPlayerParams(
                         videoUri = link.toUri().normalizeScheme().toString(),
                         isLocalVideo = true
                     )
                 )
-            }
+            }*/
 
             PatternConstants.patternYandex.matcher(linkForCheck).matches() ||
                     PatternConstants.patternYandexDisk.matcher(linkForCheck).matches() -> {
@@ -48,11 +48,7 @@ class ScannerPresenter @Inject constructor(
     }
 
     fun onCodeScannedWithError(errorMessage: String?) {
-
-    }
-
-    private fun showError() {
-
+        viewState.openErrorDialog(R.string.error_unknown)
     }
 
     private fun getRemoteVideo(publicKey: String) {
